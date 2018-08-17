@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txt_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -24,7 +24,7 @@
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txt_location_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -37,7 +37,7 @@
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txt_extra_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
