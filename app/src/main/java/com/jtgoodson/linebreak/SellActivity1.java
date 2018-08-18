@@ -34,7 +34,7 @@ public class SellActivity1 extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                lbl_newEntry_location.setText(String.format("Location: %s,%s", location.getLatitude(), location.getLongitude()));
+//                lbl_newEntry_location.setText(String.format("Location: %s,%s", location.getLatitude(), location.getLongitude()));
                 currentLatitude = location.getLatitude();
                 currentLongitude = location.getLongitude();
             }
@@ -58,18 +58,24 @@ public class SellActivity1 extends AppCompatActivity {
     }
 
     public void insertRecord(View view) {
+
+        boolean successfullyAdded = false;
+
         if (txt_sell1_location_desc.length() < 1) {
             Toast.makeText(this, "Location must be entered!", Toast.LENGTH_SHORT).show();
         } else {
 
+            Spot spot = new Spot(txt_sell1_location_desc.getText().toString(), txt_sell1_extra_details.getText().toString(), currentLatitude, currentLongitude);
+            successfullyAdded = dao.addNewRecord(spot);
 
-            Entry entry = new Entry(new Date(), txt_newEntry_subject.getText().toString(), txt_newEntry_content.getText().toString(), currentLatitude, currentLongitude);
-            dao.addNewEntry(entry);
+            if (!successfullyAdded) {
+                Toast.makeText(this, "error saving", Toast.LENGTH_LONG).show();
+            } else {
+                Intent i = new Intent(this, SellActivity2.class);
+                startActivity(i);
+            }
 
-            Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
 
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
         }
     }
 }

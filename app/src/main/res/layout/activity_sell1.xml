@@ -48,5 +48,17 @@
             android:hint="What extra details can you give about this place in line?"
             android:inputType="textMultiLine"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btn_listIt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:onClick="insertRecord"
+            android:text="List Your Spot!"
+            android:textSize="36sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

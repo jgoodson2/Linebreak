@@ -10,6 +10,16 @@ class Spot {
     private String _extra_details;
     private double _latitude;
     private double _longitude;
+    private int _isAvailable;
+
+    public Spot(String _location_desc, String _extra_details, double _latitude, double _longitude) {
+        this._dateCreated = new Date();
+        this._location_desc = _location_desc;
+        this._extra_details = _extra_details;
+        this._latitude = _latitude;
+        this._longitude = _longitude;
+        this._isAvailable = 1;
+    }
 
     public int get_id() {
         return _id;
@@ -57,5 +67,13 @@ class Spot {
 
     public void set_longitude(double _longitude) {
         this._longitude = _longitude;
+    }
+
+    public int get_isAvailable() {
+        return _isAvailable;
+    }
+
+    public void set_isAvailable(int _isAvailable) {
+        this._isAvailable = _isAvailable;
     }
 }

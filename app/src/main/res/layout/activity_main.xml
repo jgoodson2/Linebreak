@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
+            android:onClick="goToBuy1"
             android:text="BUY"
             android:textSize="30sp" />
 

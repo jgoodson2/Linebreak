@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SellActivity1.class);
         startActivity(intent);
     }
+
+    public void goToBuy1(View view) {
+        Intent intent = new Intent(this, BuyActivity1.class);
+        startActivity(intent);
+    }
 }
