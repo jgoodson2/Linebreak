@@ -84,4 +84,13 @@ public class DAO extends SQLiteOpenHelper {
         return c;
     }
 
+    public boolean markRecordUnavailable(int id){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "UPDATE " + TABLE_SPOT + " SET " + COLUMN_6_ISAVAILABLE + " = 0 WHERE " + COLUMN_0_ID + " = " +
+                String.valueOf(id);
+        db.execSQL(sql);
+        return true;
+    }
+
 }

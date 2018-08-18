@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BuyActivity2 extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class BuyActivity2 extends AppCompatActivity {
         Long latitude, longitude;
         recordData = dao.getRecordById(selectedID);
         while (recordData.moveToNext()) {
+            System.out.println("recordData.getString(0) = " + recordData.getString(0));
             System.out.println("recordData.getString(1) = " + recordData.getString(1));
             System.out.println("recordData.getString(2) = " + recordData.getString(2));
             System.out.println("recordData.getString(3) = " + recordData.getString(3));
@@ -48,7 +50,18 @@ public class BuyActivity2 extends AppCompatActivity {
         }
     }
 
-    public void goToBuy3(View view){
+    public void buySpot(View view) {
+
+        boolean recordUpdated = dao.markRecordUnavailable(selectedID);
+
+        if (!recordUpdated) {
+            Toast.makeText(this, "error: something bad happened", Toast.LENGTH_LONG);
+        } else {
+            Intent goToBuy3 = new Intent(this, BuyActivity3.class);
+            goToBuy3.putExtra("id", selectedID);
+            startActivity(goToBuy3);
+        }
+
 
     }
 }
