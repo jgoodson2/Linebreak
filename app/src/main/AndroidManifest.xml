@@ -23,7 +23,8 @@
         <activity android:name=".SellActivity1" />
         <activity android:name=".BuyActivity1" />
         <activity android:name=".SellActivity2" />
-        <activity android:name=".BuyActivity2"></activity>
+        <activity android:name=".BuyActivity2" />
+        <activity android:name=".BuyActivity3"></activity>
     </application>
 
 </manifest>

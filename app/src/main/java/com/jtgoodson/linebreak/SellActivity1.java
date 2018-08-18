@@ -21,6 +21,7 @@ public class SellActivity1 extends AppCompatActivity {
 
     private EditText txt_sell1_location_desc;
     private EditText txt_sell1_extra_details;
+    private EditText txt_sell1_asking_price;
     private DAO dao;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -34,6 +35,7 @@ public class SellActivity1 extends AppCompatActivity {
 
         txt_sell1_location_desc = (EditText) findViewById(R.id.txt_location_desc);
         txt_sell1_extra_details = (EditText) findViewById(R.id.txt_extra_details);
+        txt_sell1_asking_price = (EditText) findViewById(R.id.txt_askingPrice);
         dao = new DAO(this, null, null, 1);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         System.out.println("here");
@@ -102,9 +104,15 @@ public class SellActivity1 extends AppCompatActivity {
 
         if (txt_sell1_location_desc.length() < 1) {
             Toast.makeText(this, "Location must be entered!", Toast.LENGTH_SHORT).show();
+        } else if (txt_sell1_asking_price.length() < 1) {
+            Toast.makeText(this, "Asking price must be entered!", Toast.LENGTH_SHORT).show();
         } else {
 
-            Spot spot = new Spot(txt_sell1_location_desc.getText().toString(), txt_sell1_extra_details.getText().toString(), currentLatitude, currentLongitude);
+            System.out.println("Integer.parseInt(txt_sell1_asking_price.getText().toString()) = " + Integer.parseInt(txt_sell1_asking_price.getText().toString()));
+
+            Spot spot = new Spot(txt_sell1_location_desc.getText().toString()
+                    , txt_sell1_extra_details.getText().toString(), currentLatitude
+                    , currentLongitude, Integer.parseInt(txt_sell1_asking_price.getText().toString()));
             successfullyAdded = dao.addNewRecord(spot);
 
             if (!successfullyAdded) {

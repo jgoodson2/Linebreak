@@ -11,14 +11,24 @@ class Spot {
     private double _latitude;
     private double _longitude;
     private int _isAvailable;
+    private double _askingPrice;
 
-    public Spot(String _location_desc, String _extra_details, double _latitude, double _longitude) {
+    public double get_askingPrice() {
+        return _askingPrice;
+    }
+
+    public void set_askingPrice(double _askingPrice) {
+        this._askingPrice = _askingPrice;
+    }
+
+    public Spot(String _location_desc, String _extra_details, double _latitude, double _longitude, double _askingPrice) {
         this._dateCreated = new Date();
         this._location_desc = _location_desc;
         this._extra_details = _extra_details;
         this._latitude = _latitude;
         this._longitude = _longitude;
         this._isAvailable = 1;
+        this._askingPrice = _askingPrice;
     }
 
     public int get_id() {

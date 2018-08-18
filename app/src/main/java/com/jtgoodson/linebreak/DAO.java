@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class DAO extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     private static final String DATABASE_NAME = "spots.db";
     public static final String TABLE_SPOT = "spot";
     public static final String COLUMN_0_ID = "id";
@@ -20,6 +20,7 @@ public class DAO extends SQLiteOpenHelper {
     public static final String COLUMN_4_LATITUDE = "latitude";
     public static final String COLUMN_5_LONGITUDE = "longitude";
     public static final String COLUMN_6_ISAVAILABLE = "isAvailable";
+    public static final String COLUMN_7_ASKINGPRICE = "askingPrice";
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
     public DAO(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -32,9 +33,10 @@ public class DAO extends SQLiteOpenHelper {
                 ", " + COLUMN_1_DATE_CREATED + " TEXT" +
                 ", " + COLUMN_2_LOCATION_DESC + " TEXT" +
                 ", " + COLUMN_3_EXTRA_DETAILS + " TEXT" +
-                ", " + COLUMN_4_LATITUDE + " TEXT" +
-                ", " + COLUMN_5_LONGITUDE + " TEXT" +
-                ", " + COLUMN_6_ISAVAILABLE + " NUMBER" +
+                ", " + COLUMN_4_LATITUDE + " REAL" +
+                ", " + COLUMN_5_LONGITUDE + " REAL" +
+                ", " + COLUMN_6_ISAVAILABLE + " INTEGER" +
+                ", " + COLUMN_7_ASKINGPRICE + " REAL" +
                 ");";
         sqLiteDatabase.execSQL(sql);
         System.out.println("table created");
@@ -55,6 +57,7 @@ public class DAO extends SQLiteOpenHelper {
         values.put(COLUMN_4_LATITUDE, spot.get_latitude());
         values.put(COLUMN_5_LONGITUDE, spot.get_longitude());
         values.put(COLUMN_6_ISAVAILABLE, spot.get_isAvailable());
+        values.put(COLUMN_7_ASKINGPRICE, spot.get_askingPrice());
         SQLiteDatabase db = getWritableDatabase();
         long result = db.insert(TABLE_SPOT, null, values);
         db.close();
