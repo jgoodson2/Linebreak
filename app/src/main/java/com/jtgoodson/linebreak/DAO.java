@@ -54,7 +54,7 @@ public class DAO extends SQLiteOpenHelper {
         values.put(COLUMN_3_EXTRA_DETAILS, spot.get_extra_details());
         values.put(COLUMN_4_LATITUDE, spot.get_latitude());
         values.put(COLUMN_5_LONGITUDE, spot.get_longitude());
-        values.put(COLUMN_6_ISAVAILABLE, spot.get_longitude());
+        values.put(COLUMN_6_ISAVAILABLE, spot.get_isAvailable());
         SQLiteDatabase db = getWritableDatabase();
         long result = db.insert(TABLE_SPOT, null, values);
         db.close();
@@ -67,7 +67,8 @@ public class DAO extends SQLiteOpenHelper {
 
     public Cursor getAllRecords() {
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "SELECT * FROM " + TABLE_SPOT + " WHERE " + COLUMN_6_ISAVAILABLE + " = 1";
+        String sql = "SELECT * FROM " + TABLE_SPOT + " WHERE " + COLUMN_6_ISAVAILABLE +
+                " = 1 ORDER BY " + COLUMN_1_DATE_CREATED + " DESC";
         Cursor c = db.rawQuery(sql, null);
         return c;
     }
