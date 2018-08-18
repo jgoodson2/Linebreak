@@ -1,5 +1,6 @@
 package com.jtgoodson.linebreak;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,12 +45,12 @@ public class BuyActivity1 extends AppCompatActivity {
         listViewSpots.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = adapterView.getItemAtPosition(i).toString();
-                String id = selection.substring(selection.indexOf("Entry ID") + 9).trim();
-//                Log.d(TAG, "onItemClick: You Clicked on " + id);
+                String id = selection.substring(selection.indexOf(itemIdString) + itemIdString.length()).trim();
+                System.out.println("onItemClick: You Clicked on " + id);
 
-//                Intent viewEntryIntent = new Intent(MainActivity.this, ViewEntryActivity.class);
-//                viewEntryIntent.putExtra("id", Integer.parseInt(id));
-//                startActivity(viewEntryIntent);
+                Intent goToViewSpot = new Intent(BuyActivity1.this, BuyActivity2.class);
+                goToViewSpot.putExtra("id", Integer.parseInt(id));
+                startActivity(goToViewSpot);
 
             }
         });
