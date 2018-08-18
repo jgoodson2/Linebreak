@@ -73,4 +73,12 @@ public class DAO extends SQLiteOpenHelper {
         return c;
     }
 
+    public Cursor getRecordById(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "SELECT * FROM " + TABLE_SPOT + " WHERE " + COLUMN_0_ID + " = " +
+                String.valueOf(id);
+        Cursor c = db.rawQuery(sql, null);
+        return c;
+    }
+
 }
