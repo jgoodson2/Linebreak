@@ -21,21 +21,6 @@ public class BuyActivity2 extends AppCompatActivity {
         System.out.println("selectedID = " + selectedID);
         dao = new DAO(this, null, null, 1);
         Long latitude, longitude;
-//        if (selectedID == -1) {
-//            Toast.makeText(this, "error: no record with this id", Toast.LENGTH_LONG);
-//        } else {
-//            recordData = dao.getRecordById(selectedID);
-//            while (recordData.moveToNext()) {
-//                lbl_viewEntry_subject.setText(recordData.getString(2));
-//                lbl_viewEntry_info.setText("Date created: " + recordData.getString(1) +
-//                        "\nLatitude: " + recordData.getString(4) +
-//                        "\nLongitude: " + recordData.getString(5)
-//                );
-//                latitude = recordData.getLong(4);
-//                longitude = recordData.getLong(5);
-//                lbl_viewEntry_content.setText(recordData.getString(3));
-//            }
-//        }
         recordData = dao.getRecordById(selectedID);
         while (recordData.moveToNext()) {
 //            lbl_viewEntry_subject.setText(recordData.getString(2));
